@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": {"type": "string"},
+    "externalId": {"type": ["string", "null"]},
+    "name": {"type": ["string", "null"]},
+    "courseCode": {"type": ["string", "null"]},
+    "description": {"type": ["string", "null"]},
+    "type": {"type": ["string", "null"], "description": "online, instructorLed, bundle, curriculum, etc."},
+    "isActive": {"type": ["boolean", "null"]},
+    "categoryId": {"type": ["string", "null"]},
+    "categoryName": {"type": ["string", "null"]},
+    "authorId": {"type": ["string", "null"]},
+    "authorName": {"type": ["string", "null"]},
+    "tagIds": {"type": ["array", "null"], "items": {"type": "string"}},
+    "prerequisiteCourseIds": {"type": ["array", "null"], "items": {"type": "string"}},
+    "credits": {"type": ["number", "null"]},
+    "passingScore": {"type": ["number", "null"]},
+    "allowRestart": {"type": ["boolean", "null"]},
+    "maxAttempts": {"type": ["integer", "null"]},
+    "dateAdded": {"type": ["string", "null"], "format": "date-time"},
+    "dateEdited": {"type": ["string", "null"], "format": "date-time"},
+    "publishDate": {"type": ["string", "null"], "format": "date-time"},
+    "expiryDate": {"type": ["string", "null"], "format": "date-time"}
+  }
+}

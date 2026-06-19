@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "id": {"type": "string"},
+    "name": {"type": ["string", "null"]},
+    "courseCode": {"type": ["string", "null"]},
+    "description": {"type": ["string", "null"]},
+    "isActive": {"type": ["boolean", "null"]},
+    "categoryId": {"type": ["string", "null"]},
+    "venueId": {"type": ["string", "null"]},
+    "maxEnrollment": {"type": ["integer", "null"]},
+    "passingScore": {"type": ["number", "null"]},
+    "credits": {"type": ["number", "null"]},
+    "dateAdded": {"type": ["string", "null"], "format": "date-time"},
+    "dateEdited": {"type": ["string", "null"], "format": "date-time"}
+  }
+}

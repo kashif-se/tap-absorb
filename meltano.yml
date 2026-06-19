@@ -1,0 +1,131 @@
+# Project-level meltano.yml — use this to run tap-absorb within a Meltano project.
+# For the MeltanoHub submission YAML, see hub_submission.yml.
+
+version: 1
+default_environment: dev
+
+environments:
+- name: dev
+- name: prod
+
+plugins:
+  extractors:
+  - name: tap-absorb
+    namespace: tap_absorb
+    label: Absorb LMS
+    variant: kashif-se
+    repo: https://github.com/kashif-se/tap-absorb
+    pip_url: -e .
+    executable: tap-absorb
+    description: >-
+      Singer tap for Absorb LMS. Extracts users, departments, courses,
+      enrollments, certificates, and more from the Absorb Integration API v2.
+    capabilities:
+    - about
+    - catalog
+    - discover
+    - schema-flattening
+    - state
+    - stream-maps
+    settings:
+    - name: base_url
+      kind: string
+      value: https://rest.myabsorb.com
+      label: Base URL
+      description: >-
+        Absorb API root URL. Choose the endpoint for your region:
+        US=https://rest.myabsorb.com (default),
+        EU=https://rest.myabsorb.eu,
+        AU=https://rest.myabsorb.com.au,
+        CA=https://rest.myabsorb.ca.
+
+    - name: private_key
+      kind: password
+      label: Private API Key
+      sensitive: true
+      env: TAP_ABSORB_PRIVATE_KEY
+      description: >-
+        X-API-Key from the Absorb portal (Settings > Integrations > API Key).
+        Required for every request. Set via:
+        meltano config --store=dotenv tap-absorb set private_key VALUE
+
+    - name: username
+      kind: string
+      label: Admin Username
+      env: TAP_ABSORB_USERNAME
+      description: >-
+        LMS admin username for the /authenticate endpoint. Recommend a
+        dedicated API-only admin account.
+
+    - name: password
+      kind: password
+      label: Admin Password
+      sensitive: true
+      env: TAP_ABSORB_PASSWORD
+      description: >-
+        Password for the admin account specified in username. Set via:
+        meltano config --store=dotenv tap-absorb set password VALUE
+    - name: start_date
+      kind: date_iso8601
+      label: Start Date
+      description: >-
+        UTC datetime from which incremental syncs begin.
+        Records with dateEdited >= start_date are returned.
+        Format: 2022-01-01T00:00:00Z
+
+    - name: page_size
+      kind: integer
+      value: 500
+      label: Page Size
+      description: Records per API page (1–1000). Default 500.
+
+    - name: user_agent
+      kind: string
+      value: tap-absorb/0.1.0 (https://kashifsohail.com)
+      label: User Agent
+      description: User-Agent header sent with every request.
+
+    - name: flattening_enabled
+      kind: boolean
+      label: Enable Schema Flattening
+      description: >-
+        Flatten nested JSON into top-level columns using '__' as separator.
+
+    - name: flattening_max_depth
+      kind: integer
+      label: Max Flattening Depth
+      description: Maximum depth to flatten when schema flattening is enabled.
+
+    - name: stream_maps
+      kind: object
+      label: Stream Maps
+      description: Inline stream-map config for renaming, filtering, or transforming
+        streams.
+
+    - name: stream_map_config
+      kind: object
+      label: Stream Map Config
+      description: Variables available to stream_maps expressions.
+
+    domain_url: https://www.absorblms.com/
+    maintenance_status: active
+    keywords:
+    - api
+    - lms
+    - learning
+    - meltano_sdk
+    select:
+    - departments.*
+    - categories.*
+    - groups.*
+    - courses.*
+    - course_bundles.*
+    - curricula.*
+    - instructor_led_courses.*
+    - learning_paths.*
+    - users.*
+    - enrollments.*
+    - certificates.*
+    - external_training.*
+    - attendances.*
+project_id: b767cd7f-b248-4916-8878-5b9b177ee647

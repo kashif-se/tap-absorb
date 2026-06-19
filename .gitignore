@@ -1,0 +1,27 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Sensitive credentials — never commit these
+.env
+tap-config.json
+*-config.json
+state.json
+
+# Meltano
+.meltano/
+test_project/
+
+# Hub submission (contains your personal details — submit manually via PR)
+hub_submission.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
