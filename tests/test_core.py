@@ -10,7 +10,6 @@ import responses as rsps_module
 from tap_absorb.tap import TapAbsorb
 from tests.conftest import SAMPLE_TOKEN
 
-
 # ---------------------------------------------------------------------------
 # Tap discovery / config validation
 # ---------------------------------------------------------------------------

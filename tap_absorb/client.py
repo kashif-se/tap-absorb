@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import Any, Generator, Optional
+from typing import Any, Generator, Iterable, Optional
 
 import backoff
 import requests
