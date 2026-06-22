@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 # Authenticator
 # ---------------------------------------------------------------------------
 
+
 class AbsorbAuthenticator:
     """Handles the Absorb /authenticate flow.
 
@@ -138,6 +139,7 @@ class AbsorbAuthenticator:
 # Paginator
 # ---------------------------------------------------------------------------
 
+
 class AbsorbPaginator(BasePageNumberPaginator):
     """Page-number paginator for the Absorb API.
 
@@ -166,6 +168,7 @@ class AbsorbPaginator(BasePageNumberPaginator):
 # ---------------------------------------------------------------------------
 # Base stream
 # ---------------------------------------------------------------------------
+
 
 class AbsorbStream(RESTStream):
     """Base class for all Absorb LMS streams.

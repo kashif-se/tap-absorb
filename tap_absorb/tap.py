@@ -125,7 +125,7 @@ class TapAbsorb(Tap):
             # People
             UsersStream(self),
             # Fact / event streams
-            UserEnrollmentsStream(self),   # child of UsersStream
+            UserEnrollmentsStream(self),  # child of UsersStream
             AttendancesStream(self),
             CertificatesStream(self),
             ExternalTrainingStream(self),
