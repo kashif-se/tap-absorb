@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import pytest
 import responses as rsps_module
 
 from tap_absorb.tap import TapAbsorb
-from tests.conftest import SAMPLE_CONFIG, SAMPLE_TOKEN
+from tests.conftest import SAMPLE_TOKEN
 
 
 # ---------------------------------------------------------------------------
@@ -161,7 +161,9 @@ def test_users_stream_provides_child_context(sample_config):
     """UsersStream.get_child_context() should return {user_id: ...}."""
     tap = TapAbsorb(config=sample_config)
     stream = tap.streams["users"]
-    ctx = stream.get_child_context(record={"id": "abc-123", "email": "test@example.com"}, context=None)
+    ctx = stream.get_child_context(
+        record={"id": "abc-123", "email": "test@example.com"}, context=None
+    )
     assert ctx == {"user_id": "abc-123"}
 
 

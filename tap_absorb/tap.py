@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Type
+from typing import List
 
 from singer_sdk import Tap
 from singer_sdk import typing as th
